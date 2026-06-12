@@ -100,6 +100,7 @@ graph LR
     classDef start fill:#CBD5E1,stroke:#64748B,stroke-width:2px,color:#0F172A;
 
     START([Start Pipeline]):::start
+    RP[Resume Parser Agent<br/>Parse uploaded CV text]:::agent
     JD[JD Analyzer Agent<br/>Extract requirements & title]:::agent
     CR[Candidate Retrieval Agent<br/>Search Qdrant for similar CVs]:::agent
     MA[Matching Agent<br/>Compare CVs with requirements]:::agent
@@ -109,7 +110,8 @@ graph LR
     RA[Ranking Agent<br/>Rank candidates based on fit]:::agent
     END([Save Results & Finish]):::start
 
-    START --> JD
+    START --> RP
+    RP --> JD
     JD --> CR
     CR --> MA
     MA --> SG
@@ -119,6 +121,7 @@ graph LR
     RA --> END
 ```
 
+*   **Resume Parser Agent:** Invoked asynchronously during resume uploads to parse unstructured text (PDF/DOCX/TXT) and extract structured candidate profiles (personal details, skills, education, and work experience).
 *   **JD Analyzer Agent:** Extracts core required skills, preferred skills, and experience criteria from the raw Job Description text.
 *   **Candidate Retrieval Agent:** Vectorizes the job criteria and queries Qdrant for the top 5 semantically matching candidates under the recruiter's tenant.
 *   **Matching Agent:** Compares candidate profiles with job requirements to calculate individual fit scores (0-100), key strengths, and overall summaries.
