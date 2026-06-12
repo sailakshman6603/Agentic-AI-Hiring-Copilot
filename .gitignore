@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Backend uploads / temporary files
+backend/uploads/
+
+# Node dependencies
+node_modules/
+jspm_packages/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Environment variables (Crucial: contains private API keys!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Operating System files
+.DS_Store
+Thumbs.db
